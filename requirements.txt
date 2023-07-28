@@ -1,0 +1,7 @@
+The package requirements for this Python program are:
+- pandas
+- numpy
+- requests
+- sklearn
+- matplotlib
+- ccxt
