@@ -8,10 +8,12 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import ccxt
 
+
 class TradingAssistant:
     def __init__(self, api_key):
         self.api_key = api_key
-        self.exchange = ccxt.binance({'apiKey': api_key, 'secret': 'your_api_secret_key'})
+        self.exchange = ccxt.binance(
+            {'apiKey': api_key, 'secret': 'your_api_secret_key'})
 
     def collect_data(self):
         url = 'https://api.example.com/markets'
@@ -29,7 +31,8 @@ class TradingAssistant:
     def train_model(self, df):
         X = df.drop(columns='price')
         y = df['price']
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, shuffle=False)
         scaler = MinMaxScaler()
         X_train_scaled = scaler.fit_transform(X_train)
         X_test_scaled = scaler.transform(X_test)
@@ -64,6 +67,7 @@ class TradingAssistant:
         portfolio = {'BTC': 1.0, 'ETH': 0.5, 'LTC': 0.3}
         optimized_portfolio = self.risk_management(portfolio)
         report = self.generate_report(df)
+
 
 if __name__ == '__main__':
     api_key = 'your_api_key'
